@@ -1,0 +1,23 @@
+#main-button {
+  width: 220px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  line-height: 80px;
+  background-color: blue;
+  color: white;
+  text-align: center;
+  padding: 5px 0;
+}
+
+#overlay {
+  width: 800px;
+  height: 400px;
+  font-size: 1.3rem;
+}
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

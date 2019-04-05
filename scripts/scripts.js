@@ -19,21 +19,22 @@ function toggleOverlay () {
 }
 
 //data comes from /data/data.js
-function showCorrespondingText (e) {
+function showCorrespondingText (e, id) {
+  if (id === undefined) id = Number(this.id); // if no id as argument given, use the div-id of current infobox
   unselectAllInfoBoxes();
   $(this).addClass("selected");
-  switch (this.id) {
-    case "1": infoText.text(infotexts.Karrieweg); break;
-    case "2": infoText.text(infotexts.Promotion); break;
-    case "3": infoText.text(infotexts.Habilitation); break;
-    case "4": infoText.text(infotexts.Juniorproffesur); break;
-    case "5": infoText.text(infotexts.Berufungssverfahren); break;
-    case "6": infoText.text(infotexts.Arbeitsplatz); break;
-    case "7": infoText.text(infotexts.FamiliePartnerschaftAlltag); break;
-    case "8": infoText.text(infotexts.Mobilität); break;
-    case "9": infoText.text(infotexts.BlickAusDemAusland); break;
-    case "10": infoText.text(infotexts.Allgemein); break;
-    default: console.log("Bitte wählen Sie eine Kategorie oder Textsorte aus."); // Default Text
+  switch (id) {
+    case 0: infoText.text(infotexts.Karrieweg); break;
+    case 1: infoText.text(infotexts.Habilitation); break;
+    case 2: infoText.text(infotexts.Promotion); break;
+    case 3: infoText.text(infotexts.Juniorproffesur); break;
+    case 4: infoText.text(infotexts.Berufungssverfahren); break;
+    case 5: infoText.text(infotexts.Arbeitsplatz); break;
+    case 6: infoText.text(infotexts.FamiliePartnerschaftAlltag); break;
+    case 7: infoText.text(infotexts.Mobilität); break;
+    case 8: infoText.text(infotexts.BlickAusDemAusland); break;
+    case 9: infoText.text(infotexts.Allgemein); break;
+    default: infoText.text("Bitte wählen Sie eine Kategorie oder Textsorte aus."); // Default Text
   }
 }
 
@@ -57,10 +58,12 @@ function handleKeydown(e) {
       if (e.keyCode === 37) selectedBoxId--;    // LEFT 
       if (e.keyCode === 38) selectedBoxId -= 2; // UP
       if (e.keyCode === 39) selectedBoxId++;    // RIGHT
-      if (e.keyCode === 40) selectedBoxId += 2;
+      if (e.keyCode === 40) selectedBoxId += 2; // DOWN
       if (e.keyCode === 27) toggleOverlay()     // ESC
       if (selectedBoxId > 9) selectedBoxId = 0;
       if (selectedBoxId < 0) selectedBoxId = 9;
+			console.log("TCL: handleKeydown -> selectedBoxId AFTER", selectedBoxId)
+      showCorrespondingText(e, selectedBoxId);
       $($('.info-box')[selectedBoxId]).addClass("selected");
     }
   } else  {

@@ -49,8 +49,9 @@ function unselectAllInfoBoxes() {
 function handleKeydown(e) {
   let overlayIsVisible = $("#overlay:visible").length > 0; // check if overlay is visible
   if (overlayIsVisible) {
+    if (e.keyCode === 27) toggleOverlay();     // ESC
     // if no box is selected, select the first one by default
-    if (!infoBoxes.hasClass("selected")) $(infoBoxes[0]).addClass("selected");  
+    else if (!infoBoxes.hasClass("selected")) $(infoBoxes[0]).addClass("selected");  
     // if a box is selected, select the next/previous box
     else {
       let selectedBoxId = Number($('.selected')[0].id);

@@ -5,12 +5,11 @@ const infoText = $("#info-text")
 const infoBoxes = $(".info-box");
 
 // EVENT HANDLER
-mainButton.on( "click", overlay.toggle());             // show Overlay on Click Main-Button
-XButton.on("click", overlay.toggle());                 // hide Overlay on Click X-Button
-infoBoxes.mouseenter(showCorrespondingText);        // show infotext to each category and select box
-infoBoxes.mouseleave(hideCorrespondingText);        // reset text & unselect box on mouseleave
-
-window.addEventListener("keydown", handleKeydown);  // handle all Keydown-Events
+mainButton.on( "click", function(){overlay.toggle()});  // show Overlay on Click Main-Button
+XButton.on("click", function(){overlay.toggle()});      // hide Overlay on Click X-Button
+infoBoxes.mouseenter(showCorrespondingText);            // show infotext to each category and select box
+infoBoxes.mouseleave(hideCorrespondingText);            // reset text & unselect box on mouseleave
+window.addEventListener("keydown", handleKeydown);      // handle all Keydown-Events
 
 // FUNCTIONS
 

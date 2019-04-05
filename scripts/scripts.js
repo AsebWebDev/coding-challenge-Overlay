@@ -4,6 +4,16 @@ const XButton = $("#overlay span");
 const infoText = $("#info-text")
 const infoBoxes = $(".info-box");
 
+// EVENT HANDLER
+mainButton.on( "click", toggleOverlay);             // show Overlay on Click Main-Button
+XButton.on("click", toggleOverlay);                 // hide Overlay on Click X-Button
+infoBoxes.mouseenter(showCorrespondingText);        // show infotext to each category and select box
+infoBoxes.mouseleave(hideCorrespondingText);        // reset text & unselect box on mouseleave
+
+window.addEventListener("keydown", handleKeydown);  // handle all Keydown-Events
+
+// FUNCTIONS
+
 function toggleOverlay () {
   overlay.toggle();
 }
@@ -46,16 +56,13 @@ function handleKeydown(e) {
       unselectAllInfoBoxes();
       if (e.keyCode === 37 || e.keyCode === 38) selectedBoxId--; // LEFT || UP
       else if (e.keyCode === 39 || e.keyCode === 40) selectedBoxId++; // RIGHT // DOWN
+      else if (e.keyCode === 27) toggleOverlay()
       if (selectedBoxId > 9) selectedBoxId = 0;
       if (selectedBoxId < 0) selectedBoxId = 9;
       $($('.info-box')[selectedBoxId]).addClass("selected");
     }
+  } else  {
+    if (e.keyCode === 13) toggleOverlay(); // open overlay on Enter when Overlay it invisible
   }
 }
 
-// EVENT HANDLER
-mainButton.on( "click", toggleOverlay);             // show Overlay on Click Main-Button
-XButton.on("click", toggleOverlay);                 // hide Overlay on Click X-Button
-infoBoxes.mouseenter(showCorrespondingText);        // show infotext to each category and select box
-infoBoxes.mouseleave(hideCorrespondingText);        // reset text & unselect box on mouseleave
-window.addEventListener("keydown", handleKeydown);  // handle all Keydown-Events

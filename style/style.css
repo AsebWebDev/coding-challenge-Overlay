@@ -40,7 +40,7 @@ body {
 }
 
 #overlay-right {
-  background-color: rgb(150, 150, 228);
+  background-color: rgb(36, 183, 202);
   width: 60%;
   margin-left: 2%;
 }
@@ -57,7 +57,7 @@ body {
 .info-box {
   font-size: 1rem;
   font-weight: bold;
-  color: rgb(150, 150, 228);
+  color: rgb(36, 183, 202);
   background-color: white;
   width: 140px;
   height: 65px;
@@ -66,7 +66,7 @@ body {
 }
 
 .selected {
-  background-color: rgb(150, 150, 228);
+  background-color: rgb(36, 183, 202);
   color: white;
 }
 

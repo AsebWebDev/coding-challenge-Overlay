@@ -17,11 +17,11 @@ window.addEventListener("keydown", handleKeydown);  // handle all Keydown-Events
 //Show Text corresponding to the selected box (by mouse or keyboard)
 //data comes from /data/data.js
 function showCorrespondingText (e, id) {
-  if (id === undefined) id = Number(this.id); // if no id as argument is given, use the div-id of current infobox
+  if (id === undefined) id = Number(this.id); // if no id as argument is given, use the div-id (String -> Number) of current infobox
   unselectAllInfoBoxes();
   $(this).addClass("selected");
   switch (id) {
-    case 0: infoText.text(infotexts.Karrieweg); break;
+    case 0: infoText.text(infotexts.Karriewege); break;
     case 1: infoText.text(infotexts.Habilitation); break;
     case 2: infoText.text(infotexts.Promotion); break;
     case 3: infoText.text(infotexts.Juniorproffesur); break;

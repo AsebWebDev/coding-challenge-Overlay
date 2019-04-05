@@ -45,13 +45,13 @@ body {
   margin-left: 2%;
 }
 
+#info-text {
+  padding: 20px;
+}
+
 .overlay-content {
   display: flex;
   height: 100%;
-}
-
-.info-text {
-  padding: 20px;
 }
 
 .info-box {

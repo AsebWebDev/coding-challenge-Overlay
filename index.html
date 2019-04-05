@@ -4,44 +4,55 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>Alle Kategorien</title>
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <div id="main-button" class="centered">
     Alle Kategorien
   </div>
+
+  <!-- O V E R L A Y  -->
   <div id="overlay" class="centered" hidden>
+
+    <!-- H E A D E R  -->
     <div id="header">
       <div><h4>Alle Kategorien</h4></div>
       <div><span>X</span></div> 
     </div>
+
     <div class="overlay-content">
+      
+      <!-- OVERLAY LEFT SIDE -->
       <div id="overlay-left">
-        <div class="info-box">Karrierewege</div>
-        <div class="info-box">Promotion</div>
-        <div class="info-box">Habilitation</div>
-        <div class="info-box">Juniorprofessur</div>
-        <div class="info-box">Berufungs-verfahren</div>
-        <div class="info-box">Arbeitsplatz</div>
-        <div class="info-box">Familie, Partnerschaft, Alltag</div>
-        <div class="info-box">Mobilität</div>
-        <div class="info-box">Blick aus dem Ausland</div>
-        <div class="info-box">Allgemein</div>
+        <div class="info-box" id="ib1">Karrierewege</div>
+        <div class="info-box" id="ib2">Habilitation</div>
+        <div class="info-box" id="ib3">Promotion</div>
+        <div class="info-box" id="ib4">Juniorprofessur</div>
+        <div class="info-box" id="ib5">Berufungs-verfahren</div>
+        <div class="info-box" id="ib6">Arbeitsplatz</div>
+        <div class="info-box" id="ib7">Familie, Partnerschaft, Alltag</div>
+        <div class="info-box" id="ib8">Mobilität</div>
+        <div class="info-box" id="ib9">Blick aus dem Ausland</div>
+        <div class="info-box" id="ib10">Allgemein</div>
       </div>
-      <div id="overlay-right">
-        
-        <div class="info-text">
+
+      <!-- OVERLAY RIGHT SIDE -->
+      <div id="overlay-right">  
+        <div id="info-text">
           Bitte wählen Sie eine Kategorie oder Textsorte aus.
         </div>
       </div>
     </div>
   </div>
+
 </body>
 <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
+<script src="data.js"></script>
 <script src="scripts.js"></script>
 </html>

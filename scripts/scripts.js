@@ -10,17 +10,19 @@ function toggleOverlay () {
 
 //data comes from /data/data.js
 function showCorrespondingText (e) {
+  unselectAllInfoBoxes();
+  $(this).addClass("selected");
   switch (this.id) {
-    case "ib1": infoText.text(infotexts.Karrieweg); break;
-    case "ib2": infoText.text(infotexts.Promotion); break;
-    case "ib3": infoText.text(infotexts.Habilitation); break;
-    case "ib4": infoText.text(infotexts.Juniorproffesur); break;
-    case "ib5": infoText.text(infotexts.Berufungssverfahren); break;
-    case "ib6": infoText.text(infotexts.Arbeitsplatz); break;
-    case "ib7": infoText.text(infotexts.FamiliePartnerschaftAlltag); break;
-    case "ib8": infoText.text(infotexts.Mobilität); break;
-    case "ib9": infoText.text(infotexts.BlickAusDemAusland); break;
-    case "ib10": infoText.text(infotexts.Allgemein); break;
+    case "1": infoText.text(infotexts.Karrieweg); break;
+    case "2": infoText.text(infotexts.Promotion); break;
+    case "3": infoText.text(infotexts.Habilitation); break;
+    case "4": infoText.text(infotexts.Juniorproffesur); break;
+    case "5": infoText.text(infotexts.Berufungssverfahren); break;
+    case "6": infoText.text(infotexts.Arbeitsplatz); break;
+    case "7": infoText.text(infotexts.FamiliePartnerschaftAlltag); break;
+    case "8": infoText.text(infotexts.Mobilität); break;
+    case "9": infoText.text(infotexts.BlickAusDemAusland); break;
+    case "10": infoText.text(infotexts.Allgemein); break;
     default: console.log("Bitte wählen Sie eine Kategorie oder Textsorte aus."); // Default Text
   }
 }
@@ -29,23 +31,31 @@ function hideCorrespondingText() {
   infoText.text("Bitte wählen Sie eine Kategorie oder Textsorte aus.") // Default Text
 }
 
+function unselectAllInfoBoxes() {
+  $(".info-box").removeClass("selected");
+}
+
 function handleKeydown(e) {
   let overlayIsVisible = $("#overlay:visible").length > 0; // check if overlay is visible
   if (overlayIsVisible) {
-    switch (e.keyCode) {
-      case 37: console.log("left arrow"); break;
-      case 38: console.log("up arrow"); break;
-      case 39: console.log("right arrow"); break;
-      case 40: console.log("down arrow"); break;
-      case 13: console.log("enter"); break;
+    // if no box is selected, select the first one by default
+    if (!infoBoxes.hasClass("selected")) $(infoBoxes[0]).addClass("selected");  
+    // if a box is selected, select the next/previous box
+    else {
+      let selectedBoxId = $('.selected')[0].id;
+      unselectAllInfoBoxes();
+      if (e.keyCode === 37 || e.keyCode === 38) selectedBoxId--; // LEFT || UP
+      else if (e.keyCode === 39 || e.keyCode === 40) selectedBoxId++; // RIGHT // DOWN
+      if (selectedBoxId > 9) selectedBoxId = 0;
+      if (selectedBoxId < 0) selectedBoxId = 9;
+      $($('.info-box')[selectedBoxId]).addClass("selected");
     }
   }
 }
 
 // EVENT HANDLER
-mainButton.on( "click", toggleOverlay);
-XButton.on("click", toggleOverlay);
-infoBoxes.mouseenter(showCorrespondingText);
-infoBoxes.mouseleave(hideCorrespondingText)
-
-window.addEventListener("keydown", handleKeydown)
+mainButton.on( "click", toggleOverlay);             // show Overlay on Click Main-Button
+XButton.on("click", toggleOverlay);                 // hide Overlay on Click X-Button
+infoBoxes.mouseenter(showCorrespondingText);        // show infotext to each category and select box
+infoBoxes.mouseleave(hideCorrespondingText);        // reset text & unselect box on mouseleave
+window.addEventListener("keydown", handleKeydown);  // handle all Keydown-Events

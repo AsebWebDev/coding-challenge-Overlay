@@ -52,17 +52,19 @@ function handleKeydown(e) {
     if (!infoBoxes.hasClass("selected")) $(infoBoxes[0]).addClass("selected");  
     // if a box is selected, select the next/previous box
     else {
-      let selectedBoxId = $('.selected')[0].id;
+      let selectedBoxId = Number($('.selected')[0].id);
       unselectAllInfoBoxes();
-      if (e.keyCode === 37 || e.keyCode === 38) selectedBoxId--; // LEFT || UP
-      else if (e.keyCode === 39 || e.keyCode === 40) selectedBoxId++; // RIGHT // DOWN
-      else if (e.keyCode === 27) toggleOverlay()
+      if (e.keyCode === 37) selectedBoxId--;    // LEFT 
+      if (e.keyCode === 38) selectedBoxId -= 2; // UP
+      if (e.keyCode === 39) selectedBoxId++;    // RIGHT
+      if (e.keyCode === 40) selectedBoxId += 2;
+      if (e.keyCode === 27) toggleOverlay()     // ESC
       if (selectedBoxId > 9) selectedBoxId = 0;
       if (selectedBoxId < 0) selectedBoxId = 9;
       $($('.info-box')[selectedBoxId]).addClass("selected");
     }
   } else  {
-    if (e.keyCode === 13) toggleOverlay(); // open overlay on Enter when Overlay it invisible
+    if (e.keyCode === 13) toggleOverlay(); // open overlay on ENTER when Overlay it invisible
   }
 }
 

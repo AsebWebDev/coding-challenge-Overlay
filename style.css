@@ -1,3 +1,24 @@
+body {
+  color: white;
+  background-color: grey;
+  font-family: "Roboto", sans-serif;
+}
+
+#header {
+  display: flex;
+  justify-content: space-between;
+}
+
+#overlay {
+  width: 800px;
+  height: 400px;
+  font-size: 1.3rem;
+}
+
+#header span {
+  font-size: 2rem;
+}
+
 #main-button {
   width: 220px;
   font-size: 1.3rem;
@@ -9,10 +30,44 @@
   padding: 5px 0;
 }
 
-#overlay {
-  width: 800px;
-  height: 400px;
-  font-size: 1.3rem;
+#overlay-left {
+  display: flex;
+  flex-direction: row;
+  align-content: start;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 40%;
+}
+
+#overlay-right {
+  background-color: rgb(150, 150, 228);
+  width: 60%;
+  margin-left: 2%;
+}
+
+.overlay-content {
+  display: flex;
+  height: 100%;
+}
+
+.info-text {
+  padding: 20px;
+}
+
+.info-box {
+  font-size: 1rem;
+  font-weight: bold;
+  color: rgb(150, 150, 228);
+  background-color: white;
+  width: 140px;
+  height: 65px;
+  padding: 4px;
+  margin: 0 8px 8.5px 0;
+}
+
+.info-box:hover {
+  background-color: rgb(150, 150, 228);
+  color: white;
 }
 
 .centered {

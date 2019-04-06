@@ -30,7 +30,7 @@ function showCorrespondingText (e, id) {
     case 7: infoText.text(infotexts.Mobilität); break;
     case 8: infoText.text(infotexts.BlickAusDemAusland); break;
     case 9: infoText.text(infotexts.Allgemein); break;
-    default: infoText.text(infotexts.DefaultText); // Default Text
+    default: infoText.text(infotexts.DefaultText); break; // Default Text
   }
 }
 
@@ -45,7 +45,7 @@ function unselectAllInfoBoxes() {
 function handleKeydown(e) {
   let overlayIsVisible = $("#overlay:visible").length > 0; // check if overlay is visible
   if (overlayIsVisible) {
-    if (e.keyCode === 27) overlay.toggle()();      // ESC
+    if (e.keyCode === 27) overlay.toggle();   // ESC
     else if (!infoBoxes.hasClass("selected")) { // if no box is selected, select & show the first one by default
       $(infoBoxes[0]).addClass("selected");  
       infoText.text(infotexts.Karrieweg)
@@ -56,14 +56,13 @@ function handleKeydown(e) {
       if (e.keyCode === 38) selectedBoxId -= 2; // UP
       if (e.keyCode === 39) selectedBoxId++;    // RIGHT
       if (e.keyCode === 40) selectedBoxId += 2; // DOWN
-      if (e.keyCode === 27) overlay.toggle()()     // ESC
+      if (e.keyCode === 27) overlay.toggle();  // ESC
       if (selectedBoxId > 9) selectedBoxId = 0;
       if (selectedBoxId < 0) selectedBoxId = 9;
       showCorrespondingText(e, selectedBoxId);
-      $($('.info-box')[selectedBoxId]).addClass("selected");
+      const newSelectedInfoBox = $('.info-box')[selectedBoxId]; 
+      $(newSelectedInfoBox).addClass("selected");             
     }
-  } else  {
-      if (e.keyCode === 13) overlay.toggle()();    // open overlay on ENTER when Overlay it invisible
-  }
+  } else if (e.keyCode === 13) overlay.toggle();    // open overlay on ENTER when Overlay it invisible
 }
 

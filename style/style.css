@@ -13,6 +13,7 @@ body {
   width: 800px;
   height: 400px;
   font-size: 1.3rem;
+  background-color: rgba(128, 128, 128, 0.8);
 }
 
 #header span { font-size: 2rem; }
@@ -71,4 +72,34 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+@media only screen and (max-width:760px){
+  
+  .overlay-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  #overlay {
+    width: 600px;
+    height: 90%;
+    background-color: rgba(128, 128, 128, 1);
+  }
+
+  #overlay-left {
+    width: 60%;
+  }
+
+  #overlay-right {
+    width: 51%;
+    margin: 0%;
+  }
+
 }
